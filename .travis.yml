@@ -1,7 +1,8 @@
 sudo: required
 servers:
   - docker
-language: generic
+
+
 before_install:
   - docker -t arun-ramesh07/react-test -f ./client/Dockerfile.dev ./client
 
@@ -14,9 +15,3 @@ after_success:
   - docker build -t arun-ramesh07/multi-server ./server
   - docker build -t arun-ramesh07/multi-worker ./worker
 
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
-- docker push arun-ramesh07/multi-client
-- docker push arun-ramesh07/multi-nginx
-- docker push arun-ramesh07/multi-server
-- docker push arun-ramesh07/multi-worker
