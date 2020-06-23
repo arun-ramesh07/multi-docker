@@ -4,7 +4,7 @@ servers:
 
 
 before_install:
-  - docker -t arun-ramesh07/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t arun-ramesh07/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true arun-ramesh07/react-test npm test -- --coverage
