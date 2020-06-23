@@ -4,20 +4,20 @@ servers:
 
 
 before_install:
-  - docker build -t arun-ramesh07/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t arunramesh/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true arun-ramesh07/react-test npm test -- --coverage
+  - docker run -e CI=true arunramesh/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t arun-ramesh07/multi-client ./client
-  - docker build -t arun-ramesh07/multi-nginx ./nginx
-  - docker build -t arun-ramesh07/multi-server ./server
-  - docker build -t arun-ramesh07/multi-worker ./worker
+  - docker build -t arunramesh/multi-client ./client
+  - docker build -t arunramesh/multi-nginx ./nginx
+  - docker build -t arunramesh/multi-server ./server
+  - docker build -t arunramesh/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push arun-ramesh07/multi-client
-  - docker push arun-ramesh07/multi-nginx
-  - docker push arun-ramesh07/multi-server
-  - docker push arun-ramesh07/multi-worker
+  - docker push arunramesh/multi-client
+  - docker push arunramesh/multi-nginx
+  - docker push arunramesh/multi-server
+  - docker push arunramesh/multi-worker
